@@ -1,13 +1,23 @@
 from time import sleep
 import os
 #Pegar as imformações no arquivo
-acc_passw = open('acc_passw.txt', 'r')
+acc_passw = open('Data/acc_passw.txt', 'r')
 dados = acc_passw.readline()
 dados = eval(dados)
-saldo = 0
+saldo = num_acc = num_pass = 0
 acc_passw.close()
 
+def main():
+    while True:
+        val = str(input("Você quer criar uma nova conta?(S/N) ")).strip().upper()[0]
+        if val == "S":
+            CriarAcc()
+            Deposito()
+        else:
+            break
+
 def CriarAcc():
+    global saldo, num_pass, num_acc
     num_acc = int(input("\nDigite o número da conta: ")) 
     
     while num_acc in dados or len(str(num_acc)) > 6 or len(str(num_acc)) < 6: #Validação do número de conta
@@ -21,29 +31,29 @@ def CriarAcc():
         num_pass = int(input("Digite uma senha: "))
 
     #Escrever dados no arquivo
-    acc_passw = open('acc_passw.txt','w')
-    dados[num_acc] = num_pass
-    acc_passw.write(str(dados))
-    acc_passw.close()
+    #acc_passw = open('Data/acc_passw.txt','w')
+    #dados[num_acc] = [num_pass, volordep]
+    #acc_passw.write(str(dados))
+    #acc_passw.close()
 
 def Deposito():
-    global saldo
-    print("\nConta criada, faça seu primeiro depósito.\n")
+    global saldo, num_pass, num_acc
+    print("\nPara a conta ser criada, faça seu primeiro depósito.\n")
     volordep = float(input("Valor do primeiro depósito: "))
     
     while volordep < 30: #Deposito minimo de 30 reais
         print("O valor de deposito minimo é R$30,00.")
         volordep = float(input("Valor do primeiro depósito: "))
     saldo += volordep
+    
+    acc_passw = open('Data/acc_passw.txt','w')
+    dados[num_acc] = [num_pass, saldo]
+    acc_passw.write(str(dados))
+    acc_passw.close()
     sleep(2)
-    print("\nDeposito feito!\n")
+    
+    print("\nConta Criada e Deposito feito!\n")
     sleep(1.5)
     os.system('cls' if os.name == 'nt' else 'clear')
 
-while True:
-    val = str(input("Você quer criar uma nova conta?(S/N) ")).strip().upper()[0]
-    if val == "S":
-        CriarAcc()
-        Deposito()
-    else:
-        break
+main()
