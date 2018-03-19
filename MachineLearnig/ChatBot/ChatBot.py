@@ -1,23 +1,21 @@
-# -*- coding: utf-8 -*-
-from chatterbot.trainers import ListTrainer
+from chatterbot.filters import RepetitiveResponseFilter
 from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
 
-bot = ChatBot('Test')
 
-falas = ['oi', 'olá','bom dia', 'opá','Como vai? ','estou bem']
+chatbot = ChatBot('Alfredo',filters=["chatterbot.filters.RepetitiveResponseFilter"])
 
-bot.set_trainer(ListTrainer)
-bot.train(falas)
+words = [
+    'Hello','How are you?',"I'm fine, and you", "I'm doing great!","What's your name? "
+]
+
+chatbot.set_trainer(ListTrainer)
+chatbot.train(words)
 
 while True:
     question = str(input("You: "))
-    if question == "quit":
+    if question == 'quit':
         break
-    answer =  bot.get_response(question)
-    if float(answer.confidence) > 0.5:
-        print('Bot: ', answer)
-    else:
-        print("Bot:  Não entendi")
-
-    if question == "quit":
-        break
+    
+    response = chatbot.get_response(question)
+    print('Bot:',response)

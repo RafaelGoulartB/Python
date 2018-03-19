@@ -1,6 +1,6 @@
 from time import sleep
 import os
-
+#Pegar as imformações no arquivo
 acc_passw = open('acc_passw.txt', 'r')
 dados = acc_passw.readline()
 dados = eval(dados)
@@ -8,9 +8,9 @@ saldo = 0
 acc_passw.close()
 
 def CriarAcc():
-    num_acc = int(input("\nDigite o número da conta: "))
+    num_acc = int(input("\nDigite o número da conta: ")) 
     
-    while num_acc in dados or len(str(num_acc)) > 6 or len(str(num_acc)) < 6:
+    while num_acc in dados or len(str(num_acc)) > 6 or len(str(num_acc)) < 6: #Validação do número de conta
         print("Número da conta já está em uso, e só é permitido números de 6 digitos.")
         num_acc = int(input("Digite o número da conta: "))
 
@@ -20,10 +20,9 @@ def CriarAcc():
         print("Só é permitido senha com 4 digitos, digite outro.")
         num_pass = int(input("Digite uma senha: "))
 
+    #Escrever dados no arquivo
     acc_passw = open('acc_passw.txt','w')
-    
     dados[num_acc] = num_pass
-    
     acc_passw.write(str(dados))
     acc_passw.close()
 
