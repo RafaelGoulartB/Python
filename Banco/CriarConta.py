@@ -30,12 +30,6 @@ def CriarAcc():
         print("Só é permitido senha com 4 digitos, digite outro.")
         num_pass = int(input("Digite uma senha: "))
 
-    #Escrever dados no arquivo
-    #acc_passw = open('Data/acc_passw.txt','w')
-    #dados[num_acc] = [num_pass, volordep]
-    #acc_passw.write(str(dados))
-    #acc_passw.close()
-
 def Deposito():
     global saldo, num_pass, num_acc
     print("\nPara a conta ser criada, faça seu primeiro depósito.\n")
