@@ -7,9 +7,9 @@ dados = eval(dados)
 saldo = num_acc = num_pass = 0
 acc_passw.close()
 
-def main():
+def main_Criar():
     while True:
-        val = str(input("Você quer criar uma nova conta?(S/N) ")).strip().upper()[0]
+        val = str(input("\nVocê quer criar uma nova conta?(S/N) ")).strip().upper()[0]
         if val == "S":
             CriarAcc()
             Deposito()
@@ -50,4 +50,3 @@ def Deposito():
     sleep(1.5)
     os.system('cls' if os.name == 'nt' else 'clear')
 
-main()
