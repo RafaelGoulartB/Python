@@ -1,9 +1,9 @@
 from time import sleep
 import os
-#Pegar as imformações no arquivo
-acc_passw = open('Data/acc_passw.txt', 'r')
-dados = acc_passw.readline()
-dados = eval(dados)
+import pickle
+#Pegar informações
+acc_passw = open('Data/acc_passw.pck', 'rb') 
+dados = pickle.load(acc_passw)
 saldo = num_acc = num_pass = 0
 acc_passw.close()
 
@@ -33,16 +33,17 @@ def CriarAcc():
 def Deposito():
     global saldo, num_pass, num_acc
     print("\nPara a conta ser criada, faça seu primeiro depósito.\n")
-    volordep = float(input("Valor do primeiro depósito: "))
+    volordep = float(input("Valor do primeiro depósito.R$: "))
     
     while volordep < 30: #Deposito minimo de 30 reais
         print("O valor de deposito minimo é R$30,00.")
         volordep = float(input("Valor do primeiro depósito: "))
     saldo += volordep
     
-    acc_passw = open('Data/acc_passw.txt','w')
+    #Salvar informações 
+    acc_passw = open('Data/acc_passw.pck', 'wb')
     dados[num_acc] = [num_pass, saldo]
-    acc_passw.write(str(dados))
+    pickle.dump(dados, acc_passw)
     acc_passw.close()
     sleep(2)
     
@@ -50,3 +51,4 @@ def Deposito():
     sleep(1.5)
     os.system('cls' if os.name == 'nt' else 'clear')
 
+main_Criar()

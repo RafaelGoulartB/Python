@@ -10,16 +10,28 @@ print("--=-"* 15,"\n")
 
 def menu():
 	print("Escolha sua opção:")
-	option = int(input('''  [1] - Entrar na sua conta.
+	option = int(input('''  
+  [1] - Entrar na sua conta.
   [2] - Criar uma nova conta.
   [3] - Fechar a sua conta.
-  [4] - Sair do Programa.
-  :'''))
+  [0] - Sair do Programa.
+  : '''))
 
 	if option == 1:
 		login()
-
+		Opition()
 	elif option == 2:
 		main_Criar()
+
+def Opition():
+	if val() == 1:
+		op_logado = int(input('''
+  [1] - Fazer uma transferencia.
+  [2] - Fezer um deposito.
+  [3] - Sacar.
+  [4] - Consultar Saldo.
+  [0] - Sair do Programa.
+  : '''))
+
 
 menu()
