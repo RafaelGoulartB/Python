@@ -50,5 +50,3 @@ def Deposito():
     print("\nConta Criada e Deposito feito!\n")
     sleep(1.5)
     os.system('cls' if os.name == 'nt' else 'clear')
-
-main_Criar()

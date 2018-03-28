@@ -1,38 +1,41 @@
+import pickle
 #Pega as informações
-data = open('Data/acc_passw.txt', 'r')
-info = data.readline()
-info = eval(info)
+data = open('Data/acc_passw.pck', 'rb') 
+info = pickle.load(data)
 data.close()
-times_try = logado = 0
-info_acc = {}
+#Variaveis Globais
+times_try = logado = num_acc = 0
+info_acc = []
 
-def val():
-	global logado, info_acc
-	if logado == 1:
-		#l_info = [1,info_acc]
-		#return l_info
+class login():
+	def __init__(self):
+		self.num_acc = self.num_pass = 0
+		self.info_acc = []
 
+	def val(self):
+		global logado
+		if logado == 1:
+			return 1
 
-def login(): #Função para logar no sistema
-	global times_try, logado, info_conta
-	num_acc = int(input("\nNúmero da sua conta: "))
-	
-	while num_acc not in info: #Verificar se o número da conta existe
-		print("Número da conta não existe, tente de novo!")
-		num_acc = int(input("Número da sua conta: "))
-
-	while num_acc in info: #Se o número da conta existir...
-		num_pass = int(input("Digite sua senha: "))
-		info_acc = info.get(num_acc)
+	def FazerLogin(self): #Função para logar no sistema
+		global times_try, logado, info_conta
+		self.num_acc = int(input("\nNúmero da sua conta: "))
 		
-		if num_pass == info_accs[0]: #Verificar se a senha está correta
-			print("\nSenha correta!\n")
-			logado = 1
-			val()
-			break
-		elif times_try > 3: #Não tentar mais que 3 vezes
-			print("\nVocê já tentou 3 vezes, volte mais tarde! ")
-			break
-		else: #Se a senha estiver errada
-			times_try += 1
-			print("\nSenha Errada, tente novamente!")
+		while self.num_acc not in info: #Verificar se o número da conta existe
+			print("Número da conta não existe, tente de novo!")
+			self.num_acc = int(input("Número da sua conta: "))
+		while self.num_acc in info: #Se o número da conta existir...
+			self.num_pass = int(input("Digite sua senha: "))
+			self.info_acc = info.get(self.num_acc)
+			
+			if self.num_pass == self.info_acc[0]: #Verificar se a senha está correta
+				print("\nSenha correta!\n")
+				logado = 1
+				
+				break
+			elif times_try > 3: #Não tentar mais que 5 vezes
+				print("\nVocê já tentou 5 vezes, volte mais tarde! ")
+				break
+			else: #Se a senha estiver errada
+				times_try += 1
+				print("\nSenha Errada, tente novamente!")

@@ -2,14 +2,15 @@ from time import sleep
 import sys
 sys.path.append('Data')
 from CriarConta import *
-from Login import *
+from Login import * 
+x = login()
 
 print("--=-"* 15)
 print("{:^60}".format("Banco Guarani"))
 print("--=-"* 15,"\n")
 
 def menu():
-	print("Escolha sua opção:")
+  print("Escolha sua opção:")
 	option = int(input('''  
   [1] - Entrar na sua conta.
   [2] - Criar uma nova conta.
@@ -18,13 +19,14 @@ def menu():
   : '''))
 
 	if option == 1:
-		login()
+		x.FazerLogin()
 		Opition()
+    num = x.FazerLogin() 
 	elif option == 2:
 		main_Criar()
 
 def Opition():
-	if val() == 1:
+  if x.val() == 1:
 		op_logado = int(input('''
   [1] - Fazer uma transferencia.
   [2] - Fezer um deposito.
