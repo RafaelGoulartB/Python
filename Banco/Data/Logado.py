@@ -1,8 +1,17 @@
-data = open('Data/acc_passw.txt', 'r')
-info = data.readline()
-info = eval(info)
+import pickle
+data = open('Data/acc_passw.pck', 'rb') 
+info = pickle.load(data)
 data.close()
 
-def consultar_Saldo():
-	global info
+
+class logado():
+	def __init__(self):
+		self.data = open('Data/DC.pck', 'rb')
+		self.num_acc = pickle.load(self.data)
+		self.data.close()
+		
+
+	def ConsultarSaldo(self):
+		print(self.num_acc)
+
 	

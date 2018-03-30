@@ -4,7 +4,7 @@ data = open('Data/acc_passw.pck', 'rb')
 info = pickle.load(data)
 data.close()
 #Variaveis Globais
-times_try = logado = num_acc = 0
+times_try = logado = 0
 info_acc = []
 
 class login():
@@ -27,11 +27,13 @@ class login():
 		while self.num_acc in info: #Se o número da conta existir...
 			self.num_pass = int(input("Digite sua senha: "))
 			self.info_acc = info.get(self.num_acc)
+			info_exx = open('DC.pck', 'wb')
+			pickle.dump(self.num_acc, info_exx)
+			info_exx.close()
 			
 			if self.num_pass == self.info_acc[0]: #Verificar se a senha está correta
 				print("\nSenha correta!\n")
 				logado = 1
-				
 				break
 			elif times_try > 3: #Não tentar mais que 5 vezes
 				print("\nVocê já tentou 5 vezes, volte mais tarde! ")
@@ -39,3 +41,5 @@ class login():
 			else: #Se a senha estiver errada
 				times_try += 1
 				print("\nSenha Errada, tente novamente!")
+#x = login()
+#x.FazerLogin()
