@@ -1,6 +1,9 @@
 import pickle
 #Pega as informações
-data = open('Data/acc_passw.pck', 'rb') 
+if __name__ == '__main':
+	data = open('acc_passw.pck', 'rb')
+else:
+ 	data = open('Data/acc_passw.pck', 'rb')
 info = pickle.load(data)
 data.close()
 #Variaveis Globais
@@ -27,9 +30,6 @@ class login():
 		while self.num_acc in info: #Se o número da conta existir...
 			self.num_pass = int(input("Digite sua senha: "))
 			self.info_acc = info.get(self.num_acc)
-			info_exx = open('DC.pck', 'wb')
-			pickle.dump(self.num_acc, info_exx)
-			info_exx.close()
 			
 			if self.num_pass == self.info_acc[0]: #Verificar se a senha está correta
 				print("\nSenha correta!\n")

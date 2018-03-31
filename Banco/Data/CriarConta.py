@@ -2,7 +2,12 @@ from time import sleep
 import os
 import pickle
 #Pegar informações
-acc_passw = open('Data/acc_passw.pck', 'rb') 
+if __name__ == '__main__':
+    acc_passw = open('acc_passw.pck', 'rb') 
+else:
+    acc_passw = open('Data/acc_passw.pck', 'rb')
+#acc = {123456:[1234,100]}
+#pickle.dump(acc, acc_passw)
 dados = pickle.load(acc_passw)
 saldo = num_acc = num_pass = 0
 acc_passw.close()
