@@ -7,7 +7,6 @@ from Logado import *
 
 #Variaveis Globais
 times_try = logado = num_acc = 0
-info_acc = []
 
 class login():
   def __init__(self):
@@ -18,17 +17,20 @@ class login():
     self.data.close()
 
   def val(self):
+    '''Faz a validação para o sistema saber se o usuario esta logado'''
     global logado
     if logado == 1:
       return 1
 
-  def FazerLogin(self): #Função para logar no sistema
-    global times_try, logado, info_conta, num_acc
+  def FazerLogin(self):
+    '''Função para logar no sitema'''
+    global times_try, logado, num_acc
     self.num_acc = int(input("\nNúmero da sua conta: "))
     
     while self.num_acc not in self.info: #Verificar se o número da conta existe
       print("Número da conta não existe, tente de novo!")
       self.num_acc = int(input("Número da sua conta: "))
+    
     while self.num_acc in self.info: #Se o número da conta existir...
       self.num_pass = int(input("Digite sua senha: "))
       self.info_acc = self.info.get(self.num_acc)
@@ -46,12 +48,11 @@ class login():
         print("\nSenha Errada, tente novamente!")
 x = login()
 
-
-print("--=-"* 15)
-print("{:^60}".format("Banco Guarani"))
-print("--=-"* 15,"\n")
-
 def menu():
+  '''Imprime o menu de opçoẽs'''
+  print("--=-"* 15)
+  print("{:^60}".format("Banco Guarani"))
+  print("--=-"* 15,"\n")
   print("Escolha sua opção:")
   option = int(input('''
   [1] - Entrar na sua conta.
@@ -67,7 +68,8 @@ def menu():
     main_Criar()
 
 def Opition():
-  sleep(2)
+  '''Imprime o menu de opçoẽs do usuario se estiver logado'''
+  sleep(1.2)
   os.system('cls' if os.name == 'nt' else 'clear')
   while x.val() == 1:
     op_logado = int(input('''
@@ -83,7 +85,7 @@ def Opition():
     elif op_logado == 2:
       y.Depositar()
     elif op_logado == 3:
-      pass
+      y.Sacar()
     elif op_logado == 4:
       y.ConsultarSaldo()
     elif op_logado == 0:
