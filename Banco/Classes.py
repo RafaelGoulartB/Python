@@ -3,7 +3,7 @@ class Conta(object):
 		#Atributos
 		self.__nome = no
 		self.__numAcc = num
-		self.__tipo = tp 	#Tipos: CC, Conta Corrente. CP, Conta Corrente
+		self.__tipo = tp 	#Tipos: CC, Conta Corrente. CP, Conta Popança
 		self.__saldo = sd
 		self.__status = False
 
@@ -34,15 +34,17 @@ class Conta(object):
 		return self.__status
 
 	def getInfo(self):
+		print("\n" + ("-=-" * 10))
 		print("Nome: "+self.getNome())
 		print("Num da Conta: "+ str(self.getNumAcc()))
 		print("Tipo: " + self.getTipo())
 		print("Saldo: "+ str(self.getSaldo()))
 		print("Status: "+ str(self.getStatus()))
-
+		print(("-=-" * 10 + "\n"))
 	#Métodos
 	def trasferir():
 		pass
+	
 	def depositar(self, valor):
 		self.__setSaldo(self.getSaldo() + valor)
 
@@ -53,12 +55,16 @@ class Conta(object):
 			return False
 
 	def abrirAcc(self):
-		self.__setStatus = True
+		self.__setStatus(True)
 		if self.getTipo() == 'CC':
 			self.__setSaldo(50)
 		else:
 			self.__setSaldo(100)
-	
+		return True
+
 	def fecharAcc():
 		self.__setStatus = False
-		
+		return True
+
+	def salvarInfo():
+		pass
