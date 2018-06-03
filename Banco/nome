@@ -1,0 +1,12 @@
+nome
+numAcc
+tipo
+saldo
+status
+
+transferir()
+depositar()
+sacar()
+abrirConta()
+fecharConta()
+getInfo()

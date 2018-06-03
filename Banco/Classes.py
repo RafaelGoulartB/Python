@@ -1,4 +1,5 @@
 class Conta(object):
+	'''Classes com as funções da conta de um Banco'''
 	def __init__(self, no, num, tp, sd):
 		#Atributos
 		self.__nome = no
@@ -41,20 +42,28 @@ class Conta(object):
 		print("Saldo: "+ str(self.getSaldo()))
 		print("Status: "+ str(self.getStatus()))
 		print(("-=-" * 10 + "\n"))
-	#Métodos
+	
+	##Funções
 	def trasferir():
+		'''Transferir dinheiro para uma outra conta registrada'''
 		pass
 	
 	def depositar(self, valor):
-		self.__setSaldo(self.getSaldo() + valor)
-
+		'''Deposita um valor em uma conta se a conta tiver aberta'''
+		if self.getStatus():
+			self.__setSaldo(self.getSaldo() + valor)
+		else:
+			return False
+	
 	def sacar(self, valor):
-		if valor <= self.getSaldo():
+		'''Saca o dinheiro da conta se a conta tiver aberta'''
+		if valor <= self.getSaldo() and self.getStatus():
 			self.__setSaldo(self.getSaldo() - valor)
 		else:
 			return False
 
 	def abrirAcc(self):
+		'''Abre a conta e da um bonus dependendo do tipo de conta'''
 		self.__setStatus(True)
 		if self.getTipo() == 'CC':
 			self.__setSaldo(50)
@@ -63,8 +72,12 @@ class Conta(object):
 		return True
 
 	def fecharAcc():
-		self.__setStatus = False
-		return True
+		'''Fecha a conta se ela não tiver em débito'''
+		if self.getStatus() and self.getSaldo() >= 0:
+			self.__setStatus = False
+		else:
+			return False
 
 	def salvarInfo():
+		'''Salva as informações no banco de dados'''
 		pass
