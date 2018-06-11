@@ -78,6 +78,10 @@ class Conta(object):
 		else:
 			return False
 
+	def extrato(self):
+		pass
+
+
 	def salvarInfo():
 		'''Salva as informações no banco de dados'''
 		pass

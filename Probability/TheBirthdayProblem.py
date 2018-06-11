@@ -7,7 +7,8 @@ each person in a party has a distinct birthday
 
 people_party = int(input("How many people has in the party? "))
 
-def calc(n):
+
+def calcYear(n):
 	omega = 365**n
 	l = []
 	for i in range(n+1):
@@ -24,4 +25,6 @@ def calc(n):
 	p_distinct = (r/omega)*100
 	print("The probability of each person has a distinct birthday is {:.5f}%".format(p_distinct))
 
-calc(people_party)
+
+calcYear(people_party)
+calcMonth(people_party)
