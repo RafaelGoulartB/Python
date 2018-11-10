@@ -1,2 +1,3 @@
 # Python
-JustLearning
+
+Projetos em python para aprendizado
